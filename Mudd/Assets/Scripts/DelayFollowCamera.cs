@@ -13,11 +13,8 @@ public class DelayFollowCamera : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector3 motion = (target.position - transform.position) + offset;
-        transform.position += new Vector3(motion.x, 0, motion.z) * Mathf.Pow(rate, Time.deltaTime * 100);
-        //Vector3 tpos = target.position;
-        //Vector3 pos = transform.position;
-        //transform.position += new Vector3(tpos.x - pos.x, 0, tpos.z - pos.z) * rate;
+        transform.position += new Vector3(motion.x, 0, motion.z) * rate;
     }
 }
