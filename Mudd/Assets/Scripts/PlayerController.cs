@@ -7,10 +7,14 @@ public class PlayerController : MonoBehaviour {
     public float maxWalkSpeed = 100;
 
     Rigidbody body;
+    Transform model;
+
+    Vector3 heading;
 
 	// Use this for initialization
 	void Start () {
         body = GetComponent<Rigidbody>();
+        model = transform.Find("Model");
     }
 	
 	// Update is called once per frame
@@ -24,9 +28,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             walk(Vector3.right);
 
-        transform.rotation = Quaternion.LookRotation(directionToMouse());
+        heading = directionToMouse();
+        model.rotation = Quaternion.LookRotation(-heading);
 
-        if(body.velocity.sqrMagnitude > maxWalkSpeed * maxWalkSpeed)
+        if (body.velocity.sqrMagnitude > maxWalkSpeed * maxWalkSpeed)
             body.velocity *= maxWalkSpeed / body.velocity.magnitude;
     }
 

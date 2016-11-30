@@ -13,7 +13,7 @@ public class DelayFollowCamera : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
         Vector3 motion = (target.position - transform.position) + offset;
         transform.position += new Vector3(motion.x, 0, motion.z) * rate;
     }
